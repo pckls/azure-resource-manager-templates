@@ -3,7 +3,7 @@
 I've tested that this works using Azure CLI.
 
 ```
-user@test:~/Development/azure-resource-manager-templates/property-transformer-and-collector$ az group deployment create \
+$ az group deployment create \
 --name DemoNSGDeploy \
 --mode Incremental \
 --resource-group DemoNSG \
@@ -150,5 +150,5 @@ user@test:~/Development/azure-resource-manager-templates/property-transformer-an
   },
   "resourceGroup": "DemoNSG"
 }
-user@test:~/Development/azure-resource-manager-templates/property-transformer-and-collector$
+$
 ```
