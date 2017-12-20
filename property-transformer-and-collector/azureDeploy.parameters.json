@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "collectorTemplateUri": {
+            "value": "https://raw.githubusercontent.com/pckls/azure-resource-manager-templates/master/property-transformer-and-collector/Resources/networkSecurityGroups/collector.json"
+        },
+        "networkSecurityGroupsSettings": {
+            "value": {
+                "securityRules": [
+                    {
+                        "name": "RDPAllow",
+                        "description": "allow RDP connections",
+                        "direction": "Inbound",
+                        "priority": 100,
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "10.0.0.0/24",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "3389",
+                        "access": "Allow",
+                        "protocol": "Tcp"
+                    },
+                    {
+                        "name": "HTTPAllow",
+                        "description": "allow HTTP connections",
+                        "direction": "Inbound",
+                        "priority": 200,
+                        "sourceAddressPrefix": "*",
+                        "destinationAddressPrefix": "10.0.1.0/24",
+                        "sourcePortRange": "*",
+                        "destinationPortRange": "80",
+                        "access": "Allow",
+                        "protocol": "Tcp"
+                    }
+                ]
+            }
+        },
+        "transformTemplateUri": {
+            "value": "https://raw.githubusercontent.com/pckls/azure-resource-manager-templates/master/property-transformer-and-collector/Resources/networkSecurityGroups/transform.json"
+        }
+    }
+}
