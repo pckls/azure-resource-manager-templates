@@ -12,7 +12,7 @@
             "apiVersion": "2018-05-01",
             "copy": {
                 "name": "resourceGroups",
-                "count": "[parameters('resourceGroups')]"
+                "count": "[length(parameters('resourceGroups'))]"
             },
             "name": "[parameters('resourceGroups')[copyIndex('resourceGroups')].name]",
             "location": "[parameters('resourceGroups')[copyIndex('resourceGroups')].location]",
