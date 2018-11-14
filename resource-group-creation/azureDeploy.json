@@ -1,42 +1,24 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.1",
     "parameters": {
-        "name": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string"
-        },
-        "tags": {
-            "type": "object"
+        "resourceGroups": {
+            "type": "array"
         }
     },
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('name')]",
-            "type": "Microsoft.Resources/deployments",
             "apiVersion": "2018-05-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/pckls/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "rgName": {
-                        "value": "[parameters('name')]"
-                    },
-                    "rgLocation": {
-                        "value": "[parameters('location')]"
-                    },
-                    "tags": {
-                        "value": "[parameters('tags')]"
-                    }
-                },
-                "mode": "incremental"
-            }
+            "copy": {
+                "name": "resourceGroups",
+                "count": "[parameters('resourceGroups')]"
+            },
+            "name": "[parameters('resourceGroups')[copyIndex('resourceGroups')].name]",
+            "location": "[parameters('resourceGroups')[copyIndex('resourceGroups')].location]",
+            "type": "Microsoft.Resources/resourceGroups",
+            "properties": {},
+            "tags": "[parameters('resourceGroups')[copyIndex('resourceGroups')].tags]"
         }
     ],
     "outputs": {}

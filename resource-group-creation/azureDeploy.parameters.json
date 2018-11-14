@@ -1,17 +1,24 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#",
+    "contentVersion": "1.0.0.1",
     "parameters": {
-        "name": {
-            "value": "TestRGDeployment"
-        },
-        "location": {
-            "value": "westus"
-        },
-        "tags": {
-            "value": {
-                "hello": "world"
-            }
+        "resourceGroups": {
+            "value": [
+                {
+                    "name": "myrg-eastus",
+                    "location": "eastus",
+                    "tags": {
+                        "hello": "world"
+                    }
+                },
+                {
+                    "name": "myrg-eastus",
+                    "location": "eastus",
+                    "tags": {
+                        "hello": "world"
+                    }
+                }
+            ]
         }
     }
 }
