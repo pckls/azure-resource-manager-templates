@@ -12,10 +12,10 @@
                     }
                 },
                 {
-                    "name": "myrg-eastus",
-                    "location": "eastus",
+                    "name": "myrg-westus",
+                    "location": "westus",
                     "tags": {
-                        "hello": "world"
+                        "foo": "bar"
                     }
                 }
             ]
